@@ -5,17 +5,18 @@ const request = window.indexedDB.open("budget", 1);
       db.createObjectStore("pending", { autoIncrement: true });
     };
 
-    request.onerror = function(event) {
-      console.log("Error! " + event.target.errorCode);
-    };
 
     request.onsuccess = function(event) {
       db = event.target.result;
       
-      if (navigator.online) {
+      if (navigator.onLine) {
           checkDatabase();      
         }
     };
+
+    
+    window.addEventListener("online", checkDatabase);
+
 
       
       
