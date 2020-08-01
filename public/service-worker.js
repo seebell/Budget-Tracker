@@ -1,6 +1,6 @@
 const FILES_TO_CACHE = [
     "/",
-    "/db.js",
+    "/indexedDB.js",
     "/index.js",
     "styles.css",
     "/icons/icon-192x192.png",
@@ -83,21 +83,6 @@ const FILES_TO_CACHE = [
 //         .then(cache => cache.addAll(FILES_TO_CACHE))
 //     );
 //   });
-
-//   self.addEventListener("activate", event => {
-//     event.waitUntil(
-//         caches.keys().then(keylist => {
-//             return Promise.all(
-//                 keyList.map(key => {
-//                     if (key !== PRECACHE && Key !== DATA_CACHE_NAME) {
-//                         return caches.delete(key);
-//                     }
-//                 })
-//             )
-//         })
-//     );
-//     self.clients.claim();
-// })
   
 //   self.addEventListener("fetch", event => {
 //       if (event.request.url.includes("/api/")) {
