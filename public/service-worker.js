@@ -13,7 +13,7 @@ const DATA_CACHE_NAME = "data-cache-v2";
 
 // install
 self.addEventListener("install", function (event) {
-    // Perform install steps
+    
     event.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
             console.log("Opened cache");
@@ -23,17 +23,15 @@ self.addEventListener("install", function (event) {
     //  self.skipWaiting();
 });
 
-
-
 self.addEventListener("fetch", function (event) {
-    // cache all get requests to /api routes
+
     if (event.request.url.includes("/api/")) {
         console.log("called ----->  " + event.request.url)
         event.respondWith(
             caches.open(DATA_CACHE_NAME).then(cache => {
                 return fetch(event.request)
                     .then(response => {
-                        // If the response was good, clone it and store it in the cache.
+            
                         if (response.status === 200) {
                             cache.put(event.request.url, response.clone());
                         }
@@ -41,7 +39,6 @@ self.addEventListener("fetch", function (event) {
                         return response;
                     })
                     .catch(err => {
-                        // Network request failed, try to get it from the cache.
                         return cache.match(event.request);
                     });
             }).catch(err => console.log(err))
@@ -56,7 +53,6 @@ self.addEventListener("fetch", function (event) {
                 if (response) {
                     return response;
                 } else if (event.request.headers.get("accept").includes("text/html")) {
-                    // return the cached home page for all requests for html pages
                     return caches.match("/");
                 }
             });
