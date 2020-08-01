@@ -17,14 +17,14 @@ const request = window.indexedDB.open("budget", 1);
         console.log("Error! " + event.target.errorCode);
       };
 
-        saveRecord = record => {
+        saveRecord() = record => {
         const transaction = db.transaction(["pending"], "readwrite");
 
         const store = transaction.objectStore("pending");
         store.add(record);
     }
 
-    checkDatabase = () => {
+    checkDatabase()= () => {
         const transaction = db.transaction(["pending"], "readwrite");
         const store = transaction.objectStore("pending");
         const getAll = store.getAll();
