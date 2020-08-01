@@ -52,7 +52,7 @@ Giving users a fast and easy way to track their money is important, but allowing
 
 ## Screenshot for the app
 
-![]()<br>
+![](https://github.com/seebell/Budget-Tracker/blob/master/budget.png)<br>
 ## Heroku link for the deployed app
 
 https://guarded-earth-91977.herokuapp.com/
